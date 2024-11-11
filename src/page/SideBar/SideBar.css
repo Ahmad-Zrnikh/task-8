@@ -1,0 +1,85 @@
+.sidebar {
+    width: 270px;
+    height: 100vh;
+    background-color: #F2EAE1;
+    padding: 35px 38px 31px 39px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    overflow-y: hidden;
+}
+.sidebar .logo {
+    margin-bottom: 54px;
+    overflow-y: hidden;
+
+}
+.personalImage{
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    overflow-y: hidden;
+}
+.first {
+    overflow-y: hidden;
+text-align: center;
+}
+.sidebar .btn1 ,
+ .sidebar .btn2 ,
+ .sidebar .btn3 ,
+ .sidebar .logout
+ {
+display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+ } 
+ .sidebar .btn1 {
+    background-color: #FEAF00;
+gap: 8px;
+border-radius: 4px;
+padding: 9px 56px 9px 40px;
+ }
+ .sidebar .btn2 {
+gap: 19px;
+padding-top: 31px;
+padding-bottom: 42px;
+ }
+ .sidebar .btn3 {
+gap: 19px;
+ }
+ .sidebar .logout {
+    gap: 23px;
+
+ }
+ .sidebar .name1 {
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 20px;
+    margin-top: 15px;
+    margin-bottom: 147px;
+ }
+ .sidebar .btn1 p,
+ .sidebar .btn2 p,
+ .sidebar .btn3 p,
+ .sidebar .logout p {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+
+ }
+ .sidebar .second {
+    height: 497px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+ }
+ .sidebar button {
+    border: none ; 
+    background: none;
+ }
+@media (max-width: 1227px){
+    .sidebar {
+        display: none;
+    }
+}

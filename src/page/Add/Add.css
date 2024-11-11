@@ -1,0 +1,134 @@
+input[type="file"]{
+    display: none;
+}
+.add2{
+    display: flex;
+}
+.addPage {
+    flex: 1;
+    padding: 24px 109px 168px 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.uploadIcon2{
+    background-color: #F8F8FF;
+    border: 1px dashed #384EB74D;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 547px;
+    height: 209px;
+}
+.addPage form input {
+    border: 1px solid #E5E5E5;
+    border-radius: 4px;
+    padding: 15px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+
+}
+.addPage form input::placeholder {
+    color: #E5E5E5;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+}
+.addPage form label {
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 39px;
+    color: #6C6C6C;
+
+}
+.addPage form .btn {
+    background-color: #FEAF00;
+    color: #FFFFFF;
+    font-weight: 500;
+    font-size: 32px;
+    cursor: pointer;
+padding: 11px 62px;
+line-height: 39px;
+width: fit-content;
+align-self: center;
+}
+.back div{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 50%;
+    }
+    .back {
+        align-self: flex-start;
+    }
+    .titleAdd {
+        font-weight: 600;
+        font-size: 60px;
+        line-height: 73px;
+    }
+    .inputs1{
+        display: flex;
+        justify-content: space-between;
+        height: 65%;
+    }
+    .right {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+    }
+    .left {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 42%;
+    }
+    .addPage form {
+        display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 60%;
+    }
+    @media (max-width: 1388px){
+        .inputs1 {
+            gap: 20px;
+            flex-wrap: wrap;
+            height: auto;
+        }
+        .addPage form {
+            flex-wrap: wrap;
+            height: auto;
+            gap: 20px;
+
+        }
+        .left {
+            width: 80%;
+        }
+    }
+    @media (max-width: 1388px){
+        .uploadIcon2{
+            width: 400px;
+        }
+        .titleAdd {
+            font-size: 35px;
+        }
+        .addPage {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .addPage form label {
+        margin-bottom: 20px;
+        }
+    }
+    @media (max-width : 459px) {
+        .uploadIcon2{
+            width: 250px;
+        }
+        
+    }
