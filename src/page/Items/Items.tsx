@@ -143,7 +143,7 @@ export default function Items() {
         disabled={currentPage === 1}
         style={buttonStyle(false)}
       >
-        <img src="images/Vector2.png" alt="Previous" />
+        <img src="/images/Vector2.png" alt="Previous" />
       </button>
     );
 
@@ -244,7 +244,7 @@ export default function Items() {
         disabled={currentPage === totalPages}
         style={buttonStyle(false)}
       >
-        <img src="images/Vector.png" alt="Next" />
+        <img src="/images/Vector.png" alt="Next" />
       </button>
     );
 
@@ -271,7 +271,7 @@ export default function Items() {
       />
       <img
         className="searchIcon"
-        src="images/Vector (4).png"
+        src="/images/Vector (4).png"
         alt="Search icon"
       />
     </div>
