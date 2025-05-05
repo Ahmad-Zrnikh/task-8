@@ -43,7 +43,7 @@ export default function Add() {
       <div className="addPage">
         <Link className="back" to="/items">
           <div>
-            <img src="/images/Vector (5).png" alt="icon" />
+            <img src="/images/Vector(5).png" alt="icon" />
           </div>
         </Link>
         <p className="titleAdd">ADD NEW ITEM</p>

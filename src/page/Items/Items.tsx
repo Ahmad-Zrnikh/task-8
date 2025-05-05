@@ -271,7 +271,7 @@ export default function Items() {
       />
       <img
         className="searchIcon"
-        src="/images/Vector (4).png"
+        src="/images/Vector(4).png"
         alt="Search icon"
       />
     </div>
@@ -310,7 +310,7 @@ export default function Items() {
             </div>
           </div>
           <img
-            src={item?.image_url || "/images/image 2 (2).png"}
+            src={item?.image_url || "/images/image2(2).png"}
             alt="item"
             className="image"
           />
