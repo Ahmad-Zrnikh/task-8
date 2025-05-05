@@ -10,9 +10,9 @@ export default function Update() {
   const [name, setname] = useState("");
   const [price, setprice] = useState("");
   const [image, setimage] = useState<File | null>(null);
-  
+
   const [oldImage, setoldImage] = useState<string | null>(null);
-  const [imageUpdated, setimageUpdated] = useState(false)
+  const [imageUpdated, setimageUpdated] = useState(false);
   const params = useParams();
   const logout = () => {
     localStorage.removeItem("token");
@@ -28,17 +28,17 @@ export default function Update() {
         },
       })
       .then((res) => {
-        
         setname(res.data.name);
         setprice(res.data.price);
         setoldImage(res.data.image_url);
       })
-      .catch((err) => {console.error(err)
+      .catch((err) => {
+        console.error(err);
         toast.error(err.response.data.message);
       });
   }, [params.id]);
 
-  const send = (event : React.FormEvent<HTMLFormElement>) => {
+  const send = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     axios
       .put(
@@ -58,12 +58,10 @@ export default function Update() {
       .then((res) => {
         console.log(res);
         Navigate("/items");
-      }).catch((err) => {
-        toast.error(err.response.data.message);
-
       })
-      
-      ;
+      .catch((err) => {
+        toast.error(err.response.data.message);
+      });
   };
 
   return (
@@ -71,10 +69,15 @@ export default function Update() {
       <SideBar />
       <div className="addPage">
         <ToastContainer />
-        <img src="/images/Vector(3).png" alt="icon" className="logoutIcon" onClick={logout}/>
+        <img
+          src="/images/Vector(3).png"
+          alt="icon"
+          className="logoutIcon"
+          onClick={logout}
+        />
         <Link className="back" to="/items">
           <div>
-            <img src="/images/Vector (5).png" alt="icon" />
+            <img src="/images/Vector(5).png" alt="icon" />
           </div>
         </Link>
         <p className="titleAdd">EDIT ITEM</p>
@@ -99,7 +102,18 @@ export default function Update() {
             <div className="right">
               <label htmlFor="upload">Image</label>
               <label htmlFor="upload" className="uploadIcon2">
-                <img src={imageUpdated ?image?URL.createObjectURL(image):oldImage || "":oldImage || ""} alt="icon" className="imageUpload" />
+                <img
+                  src={
+                    imageUpdated
+                      ? image
+                        ? URL.createObjectURL(image)
+                        : oldImage || ""
+                      : oldImage || ""
+                  }
+                  alt="icon"
+                  className="imageUpload"
+                  loading="lazy"
+                />
               </label>
               <input
                 type="file"
@@ -107,9 +121,8 @@ export default function Update() {
                 onChange={(e) => {
                   const file: File | null = e.target.files?.[0] ?? null;
                   if (file && file.type.startsWith("image/")) {
-
                     setimage(file);
-                    setimageUpdated(true)
+                    setimageUpdated(true);
                   }
                 }}
               />

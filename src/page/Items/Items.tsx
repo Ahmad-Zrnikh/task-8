@@ -44,7 +44,7 @@ export default function Items() {
   const items = useSelector((state :any ) => state.auth.items);
   useEffect(() => {
     setrender(!render);
-  }, [render]);
+  }, [items]);
   useEffect(() => {
     
     axios

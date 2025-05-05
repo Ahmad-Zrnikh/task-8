@@ -67,7 +67,7 @@ export default function Show() {
         <Link className="back"  to="/items">
 
           <div>
-            <img src="/images/Vector (5).png" alt="icon" />
+            <img src="/images/Vector(5).png" alt="icon" />
           </div>
         </Link>
 
