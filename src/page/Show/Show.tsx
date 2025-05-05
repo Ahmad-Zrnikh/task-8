@@ -1,49 +1,104 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom"
-import "./Show.css"
+import { Link, useNavigate, useParams } from "react-router-dom";
+import {  motion } from 'framer-motion';
+import ClipLoader from "react-spinners/ClipLoader";
+import "./Show.css";
 import SideBar from "../SideBar/SideBar";
 export default function Show() {
-const [item, setitem] = useState()
-const params = useParams();
-useEffect(() => {
-axios.get(`https://test1.focal-x.com/api/items/${params.id}` , {
-    headers : {
-        Authorization : `Bearer ${localStorage.getItem("token")}`
-    }}
-).then(res => setitem(res.data))
-.catch(err => console.error(err))
+  const [item, setitem] = useState<item>();
+  const [loading, setloading] = useState(true)
+  const params = useParams();
+  const navigate = useNavigate();
+  type item = {
+    id: number;
+    name: string;
+    price: number;
+    image_url: string;
+    created_at: string;
+    updated_at: string;
+  }
+  const pageVariants = {
+    initial: { opacity: 0, y: 40,  },
 
-}, []);
 
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -40 },
+
+  };
+  
+  const pageTransition = {
+    duration: 0.7,
+    ease: 'easeInOut',
+  
+  };  const logout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("image");
+    localStorage.removeItem("name");
+    navigate("/");
+  };
+  useEffect(() => {
+    axios
+      .get(`https://dashboard-task-8-backend.onrender.com/items/${params.id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        setitem(res.data);
+        console.log(item);
+      })
+      .catch((err) => console.error(err)).finally(() => setloading(false));
+  }, [ ]);
 
   return (
-    <div className="showPage">
-        <SideBar/>
-        <div className="productShow">
-       <Link className="back" to="/items">
-       <div>
-        <img src="/images/Vector (5).png" alt="icon" />
-        </div>
+    <motion.div className="showPage"  >
+      <SideBar />
+      {loading ? (
+        <ClipLoader  color="#36d7b7" className="loader" size={200} />
+      ) :
+      (<motion.div className="productShow" variants={pageVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        transition={pageTransition} >
+                <img src="/images/Vector(3).png" alt="icon" className="logoutIcon" onClick={logout}/>
+        <Link className="back"  to="/items">
+
+          <div>
+            <img src="/images/Vector (5).png" alt="icon" />
+          </div>
         </Link>
 
         <p className="nameOfProduct">{item?.name}</p>
-        <div className="productImage"><img src={item?.image_url || "/images/image 2 (2).png"} alt="image" 
-        /></div>
-     <div className="price">
-        <div>price: <span>{item?.price}</span></div>
-        <div>created_at: <span>{item?.created_at.split("T")[0].split("-")[2]}/
-            {item?.created_at.split("T")[0].split("-")[1]}/
-            {item?.created_at.split("T")[0].split("-")[0]}
-            </span></div>
-       </div>
-       {/* {item?.created_at} */}
-        <p>updated_at: <span>{item?.updated_at.split("T")[0].split("-")[2]}/
+        <div className="productImage">
+          <img src={item?.image_url || "/images/image 2 (2).png"} alt="image" />
+        </div>
+        <div className="price">
+          <div>
+            price: <span>{item?.price}</span>
+          </div>
+          <div>
+            created_at:{" "}
+            <span>
+              {item?.created_at.split("T")[0].split("-")[2]}/
+              {item?.created_at.split("T")[0].split("-")[1]}/
+              {item?.created_at.split("T")[0].split("-")[0]}
+            </span>
+          </div>
+        </div>
+        {/* {item?.created_at} */}
+        <p>
+          updated_at:{" "}
+          <span>
+            {item?.updated_at.split("T")[0].split("-")[2]}/
             {item?.updated_at.split("T")[0].split("-")[1]}/
             {item?.updated_at.split("T")[0].split("-")[0]}
-            </span></p>
+          </span>
+        </p>
         {/* {item?.updated_at} */}
-        </div>
-    </div>
-  )
+      </motion.div>)}
+    </motion.div>
+  );
 }

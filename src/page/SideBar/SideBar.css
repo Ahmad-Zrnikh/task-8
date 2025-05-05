@@ -1,6 +1,6 @@
 .sidebar {
     width: 270px;
-    height: 100vh;
+   
     background-color: #F2EAE1;
     padding: 35px 38px 31px 39px;
     display: flex;
@@ -79,7 +79,7 @@ gap: 19px;
     background: none;
  }
 @media (max-width: 1227px){
-    .sidebar {
+    .sidebar  {
         display: none;
     }
 }

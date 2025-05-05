@@ -128,3 +128,7 @@ align-self: center;
         }
         
     }
+    .imageUpload {
+        height: 100%;
+        object-fit: contain;
+    }
