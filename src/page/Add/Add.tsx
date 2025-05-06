@@ -3,20 +3,24 @@ import "./Add.css";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import SideBar from "../SideBar/SideBar";
-import ClipLoader from "react-spinners/ClipLoader";
+import loading from "../../../public/Animation - 1746521884017.json";
+import Lottie from "lottie-react";
 
 export default function Add() {
+  const handleClick = () => {
+    setclicked(true);
+    setTimeout(() => {
+      setclicked(false);
+    }, 1000);
+  };
+
   const Navigate = useNavigate();
   const [name, setname] = useState("");
   const [price, setprice] = useState("");
   const [image, setImage] = useState<File | null>(null);
-    const [imageInputed, setimageInputed] = useState(false);
-  const [loading, setloading] = useState(false)
-  const loadingFun = () => {
-    setloading(true);
-    setTimeout(() => {setloading(false)},200)
-  }
-  
+  const [imageInputed, setimageInputed] = useState(false);
+  const [clicked, setclicked] = useState<boolean>(false);
+
   const send = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = {
@@ -54,7 +58,9 @@ export default function Add() {
               <input
                 type="text"
                 id="name"
-                onChange={(e : React.ChangeEvent<HTMLInputElement>) => setname(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setname(e.target.value)
+                }
                 placeholder="Enter the product name"
               />
               <label htmlFor="price">Price</label>
@@ -69,11 +75,12 @@ export default function Add() {
               <label htmlFor="upload">Image</label>
               <label htmlFor="upload" className="uploadIcon2">
                 <img
-                className="imageUpload"
+                  className="imageUpload"
                   src={
-                    
                     imageInputed
-                      ? image ? URL.createObjectURL(image) : "/images/Upload icon (1).png"
+                      ? image
+                        ? URL.createObjectURL(image)
+                        : "/images/Upload icon (1).png"
                       : "/images/Upload icon (1).png"
                   }
                   alt="icon"
@@ -82,22 +89,25 @@ export default function Add() {
               <input
                 type="file"
                 id="upload"
-                onChange={(e :React.ChangeEvent<HTMLInputElement>) => {
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                   const file: File | null = e.target.files?.[0] ?? null;
                   if (file && file.type.startsWith("image/")) {
-
                     setImage(file);
                     setimageInputed(true);
                   }
-
                 }}
               />
             </div>
           </div>
-          <div className="btn4" onClick={loadingFun}>
-            
-          <input className="btn" type="submit" value="Save" />
-         {loading && <ClipLoader/>}
+          <div className="btn4" >
+            <button className="btn" type="submit" onClick={handleClick}>
+              {" "}
+              {clicked ? (
+                <Lottie animationData={loading} className="lottie"></Lottie>
+              ) : (
+                "Save"
+              )}
+            </button>
           </div>
         </form>
       </div>

@@ -4,6 +4,9 @@ import "./Update.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
+import loading from "../../../public/Animation - 1746521884017.json";
+import Lottie from "lottie-react";
+import EcommerceSpinner from "../Spinner/Spinner";
 
 export default function Update() {
   const Navigate = useNavigate();
@@ -13,6 +16,8 @@ export default function Update() {
 
   const [oldImage, setoldImage] = useState<string | null>(null);
   const [imageUpdated, setimageUpdated] = useState(false);
+  const [clicked, setclicked] = useState<boolean>(false);
+const [loading2, setloading2] = useState<boolean>(true)
   const params = useParams();
   const logout = () => {
     localStorage.removeItem("token");
@@ -20,6 +25,13 @@ export default function Update() {
     localStorage.removeItem("name");
     Navigate("/");
   };
+  const handleClick = () => {
+    setclicked(true);
+    setTimeout(() => {
+      setclicked(false);
+    }, 1000);
+  };
+
   useEffect(() => {
     axios
       .get(`https://dashboard-task-8-backend.onrender.com/items/${params.id}`, {
@@ -35,6 +47,8 @@ export default function Update() {
       .catch((err) => {
         console.error(err);
         toast.error(err.response.data.message);
+      }).finally( () => {
+        setloading2(false)
       });
   }, [params.id]);
 
@@ -67,6 +81,8 @@ export default function Update() {
   return (
     <div className="add2">
       <SideBar />
+
+      {loading2 ? <EcommerceSpinner/> : 
       <div className="addPage">
         <ToastContainer />
         <img
@@ -128,9 +144,14 @@ export default function Update() {
               />
             </div>
           </div>
-          <input className="btn" type="submit" value="Save" />
+          <button className="btn" type="submit" value="Save" onClick={handleClick}>
+            {clicked ? <Lottie animationData={loading} className="lottie"></Lottie> : "Save"}
+          </button>
         </form>
       </div>
+}
+
+
     </div>
   );
 }

@@ -5,6 +5,8 @@ import { useDispatch } from "react-redux";
 import { setUser } from "../../redux/slice/authSlice";
 import { toast, ToastContainer } from "react-toastify";
 import "./SignUp.css";
+import Lottie from "lottie-react";
+import loading from "../../../public/Animation - 1746521884017.json";
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -17,7 +19,11 @@ export default function SignUp() {
   const [confirmation, setConfirmation] = useState("");
   const [image, setImage] = useState<File | null>(null);
   const [imageInputed, setimageInputed] = useState(false);
-
+  const [clicked, setclicked] = useState<boolean>(false)
+  const handleClick =() =>{
+    setclicked(true)
+    setTimeout(() => {setclicked(false)},1000)
+  }
   const send = (event : React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = {
@@ -117,7 +123,10 @@ export default function SignUp() {
             setimageInputed(true)
           }}}
         />
-        <input className="btn" type="submit" value="SIGN UP" />
+       <button className="btn" type="submit" value="SIGN UP" onClick={handleClick}>
+       {clicked ? <Lottie animationData={loading} className="lottie" ></Lottie> : "SIGN UP"}
+
+       </button>
         <div className="text2">
           Do you have an account?{" "}
           <Link className="link" to="/login">

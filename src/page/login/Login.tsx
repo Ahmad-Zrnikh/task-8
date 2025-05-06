@@ -5,6 +5,9 @@ import { useDispatch } from "react-redux";
 import { setUser } from "../../redux/slice/authSlice";
 import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
+import Lottie from "lottie-react";
+import loading from "../../../public/Animation - 1746521884017.json";
+
 export default function Login() {
   const navigate = useNavigate();
 
@@ -12,21 +15,13 @@ export default function Login() {
 
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
-  const send = (event : React.FormEvent<HTMLFormElement>) => {
+  const [clicked, setclicked] = useState<boolean>(false)
+  const handleClick =() =>{
+    setclicked(true)
+    setTimeout(() => {setclicked(false)},1000)
+  }
+  const send = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // fetch("https://test1.focal-x.com/api/login" ,{
-    //     method : "POST",
-    //     headers : { 'Content-Type': 'application/json' },
-    //     body : JSON.stringify({email,password})
-    // }
-
-    // ).then(res => res.json())
-    // .then(res =>{localStorage.setItem("token" , res.token)
-    //     console.log(res.user)
-    //      dispatch(setUser(res.user))
-    // navigate("/")})
-    // .catch(err => console.log(err))
-
     axios
       .post(
         "https://dashboard-task-8-backend.onrender.com/users/login",
@@ -83,9 +78,13 @@ export default function Login() {
           }}
           placeholder="Enter your password"
         />
-        <input className="btn" type="submit" value="SIGN IN" />
+        
+        <button className="btn" type="submit" value="" onClick={handleClick} >
+          {clicked ? <Lottie animationData={loading} className="lottie" ></Lottie> : "SIGN IN"}
+          
+        </button>
         <div className="text2">
-          Don’t have an account?{" "}
+          Don’t have an account?
           <Link className="link" to="/">
             Create one
           </Link>

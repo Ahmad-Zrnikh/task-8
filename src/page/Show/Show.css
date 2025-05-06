@@ -1,6 +1,5 @@
 .productImage {
     width: 373px;
-    height: 373px;
     border-radius: 16px;
     overflow: hidden;
 
@@ -62,5 +61,8 @@ border-radius: 50%;
     .productShow {
         padding-left: 30px;
         padding-right: 30px;
+    }
+    .productImage{
+        width: 250px;
     }
    }

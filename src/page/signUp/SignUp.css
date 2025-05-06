@@ -5,7 +5,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
+padding-top: 50px;
+padding-bottom: 50px;
 }
 .signUp  form {
     width: 476px;
@@ -64,6 +65,17 @@ margin-bottom: 9px;
     color: #FFFFFF;
     font-weight: 500;
     cursor: pointer;
+    border: none;
+    border: 1px solid #E5E5E5;
+    border-radius: 4px;
+    padding: 25px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    position: relative;
+    height: 55px;
+    overflow: hidden;
 }
 .signUp form .fullName,
 .signUp form .passwordInputs{
@@ -111,4 +123,9 @@ margin-bottom: 9px;
     padding: 42px 10px 20px 10px;
 
 }
+}
+@media (max-width : 500px){
+    .signUp form{
+        width: 95%;
+    }
 }

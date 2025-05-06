@@ -64,6 +64,17 @@ margin-bottom: 9px;
     color: #FFFFFF;
     font-weight: 500;
     cursor: pointer;
+    border: none;
+    border: 1px solid #E5E5E5;
+    border-radius: 4px;
+    padding: 25px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    position: relative;
+    height: 55px;
+    overflow: hidden;
 }
 .login form .text2 {
     text-align: center;
@@ -79,4 +90,20 @@ margin-bottom: 9px;
     line-height: 17px;
     color: #FEAF00;
 
+}
+.btnDiv {
+    text-align: center;
+}
+.lottie {
+    width: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+}
+@media (max-width : 500px){
+    .login form{
+        width: 95%;
+    }
 }

@@ -50,8 +50,9 @@
 
 // export default EcommerceSpinner;
 import React, { useEffect } from "react";
-import { motion } from "framer-motion";
-
+// import { motion } from "framer-motion";
+import Lottie from "lottie-react";
+import loading from "../../../public/Animation - 1746524049657.json";
 const EcommerceSpinner: React.FC = () => {
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -63,7 +64,8 @@ const EcommerceSpinner: React.FC = () => {
   return (
     <>
       <div className="ecommerce-spinner">
-        <div className="spinner-circle"></div>
+        <Lottie animationData={loading} ></Lottie>
+        {/* <div className="spinner-circle"></div>
 
         <motion.div
           className="spinner-icon"
@@ -81,7 +83,7 @@ const EcommerceSpinner: React.FC = () => {
             alt="Loading"
             style={{ width: "50px" }}
           />
-        </motion.div>
+        </motion.div> */}
       </div>
 
       <style>{`
