@@ -6,8 +6,8 @@ import "./Items.css";
 import SideBar from "../SideBar/SideBar";
 import { useDispatch, useSelector } from "react-redux";
 import { setItems } from "../../redux/slice/authSlice";
-import ClipLoader from "react-spinners/ClipLoader";
 import { toast, ToastContainer } from 'react-toastify';
+import EcommerceSpinner from "../Spinner/Spinner";
 export default function Items() {
   const container = {
     hidden: { opacity: 0 },
@@ -18,7 +18,7 @@ export default function Items() {
       },
     },
   };
-  
+ 
   const item2 = {
     hidden: { opacity: 0, rotate: -10, y: 20},
     show: { opacity: 1, rotate: 0, y: 0 },
@@ -257,7 +257,8 @@ export default function Items() {
       <ToastContainer/>
 
         {loading? (
-          <ClipLoader  color="#36d7b7" className="loader" size={200} />
+          // <ClipLoader  color="#36d7b7" className="loader" size={200} />
+          <EcommerceSpinner/>
 ) : (      <div className="products">
               <img src="/images/Vector(3).png" alt="icon" className="logoutIcon" onClick={logout}/>
 
@@ -281,11 +282,11 @@ export default function Items() {
       <button className="add">ADD NEW PRODUCT</button>
     </Link>
 
-    <motion.div className="products1"  variants={container}
+    <motion.div  className="products1"  variants={container}
       initial="hidden"
       animate="show">
       {currentItems?.map((item, index) => (
-        <motion.div key={index} className="images" variants={item2}>
+        <motion.div key={index} className="images" variants={item2} >
           <div className="name3" key={index} onClick={() => show(item._id)}>
             <span>{item?.name}</span>
             <div className="btns3">

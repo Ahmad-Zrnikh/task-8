@@ -2,9 +2,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import {  motion } from 'framer-motion';
-import ClipLoader from "react-spinners/ClipLoader";
 import "./Show.css";
 import SideBar from "../SideBar/SideBar";
+import EcommerceSpinner from "../Spinner/Spinner";
 export default function Show() {
   const [item, setitem] = useState<item>();
   const [loading, setloading] = useState(true)
@@ -56,7 +56,7 @@ export default function Show() {
     <motion.div className="showPage"  >
       <SideBar />
       {loading ? (
-        <ClipLoader  color="#36d7b7" className="loader" size={200} />
+       <EcommerceSpinner/>
       ) :
       (<motion.div className="productShow" variants={pageVariants}
         initial="initial"

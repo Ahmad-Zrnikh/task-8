@@ -7,7 +7,7 @@ import Show from "./page/Show/Show";
 import Add from "./page/Add/Add";
 import Update from "./page/Update/Update";
 import { AnimatePresence } from 'framer-motion';
-
+import 'aos/dist/aos.css'; // AOS Styles
 function App() {
   return (
     <>
